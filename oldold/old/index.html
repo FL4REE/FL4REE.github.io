@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>[old] Dashboard | FL4REE</title>
+    <link rel="icon" type="image/x-icon" href="favicon2.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Boxicons CDN Link -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxl-c-plus-plus icon"></i>
+        <div class="logo_name">FL4REE</div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="index.html">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <a href="start.html">
+            <i class="bx bx-bookmarks"></i>
+            <span class="links_name">Bookmarks</span>
+          </a>
+          <span class="tooltip">Bookmarks</span>
+        </li>
+        <li>
+          <a href="calculator.html">
+            <i class="bx bx-calculator"></i>
+            <span class="links_name">Calculator</span>
+          </a>
+          <span class="tooltip">Calculator</span>
+        </li>
+        <li class="profile">
+          <div class="profile-details">
+            <img src="profile.jpg" alt="profileImg" />
+            <div class="name_job">
+              <div class="name">Erik Pietsch</div>
+              <div class="job">Web-Designer/Developer</div>
+            </div>
+          </div>
+          <i class="bx bx-log-out" id="log_out"></i>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <div class="text">
+        <figure>
+          <div class="face top"><p id="s"></p></div>
+          <div class="face front"><p id="m"></p></div>
+          <div class="face left"><p id="h"></p></div>
+        </figure>
+        <script>
+          function date_time(id) {
+            date = new Date();
+            h = date.getHours();
+            if (h < 10) {
+              h = "0" + h;
+            }
+            m = date.getMinutes();
+            if (m < 10) {
+              m = "0" + m;
+            }
+            s = date.getSeconds();
+            if (s < 10) {
+              s = "0" + s;
+            }
+            document.getElementById("s").innerHTML = "" + s;
+            document.getElementById("m").innerHTML = "" + m;
+            document.getElementById("h").innerHTML = "" + h;
+            setTimeout('date_time("' + "s" + '");', "1000");
+            return true;
+          }
+          window.onload = date_time("s");
+        </script>
+      </div>
+    </section>
+    <script src="script2.js"></script>
+  </body>
+</html>

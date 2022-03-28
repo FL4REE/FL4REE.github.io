@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>Apro's Startpage</title>
+		<meta charset='utf-8'>
+		<link rel='stylesheet' href='catppuccin.css'>
+		<script src="https://kit.fontawesome.com/497f4f4907.js" crossorigin="anonymous"></script>
+	</head>                              
+                                       
+	<body class='flexbox' onload="startTime()">
+		<div class="mainbox">
+			<h1 class='title'>Welcome back, <span class='hl'>Erik</span>.</h1>
+			<table>
+				<tr>
+					<td>
+						<div style='margin-bottom: 64px;'>
+							<h1 id='clock' style='margin: 0px;'></h1>
+							<h2 id='cal' ></h1>
+						</div>
+						<div class='cat'>
+							&nbsp;／l、<br>
+							(⠁、.7<br>
+							&nbsp;&nbsp;|、 ~ヽ<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;じしf_,)ノ<br>
+						</div>
+					</td>
+					<td>
+						<nav class='flexbox' style='flex-direction: column;'>
+							<div class='flexbox' style='flex-direction: row; align-items: flex-start; justify-content: space-evenly;'>
+								<div>
+									<b>~/media</b>
+									<ul>
+										<li><a href='https://www.youtube.com/'>/youtube</a></li>
+										<li><a href='https://www.amazon.de/gp/video/storefront/ref=sv_atv_logo?node=3010075031'>/primevideo</a></li>
+										<li><a href='https://www.twitch.tv'>/twitch</a></li>
+										<li><a href='https://www.netflix.com/'>/netflix</a></li>
+										<li><a href='http://www.anicloud.io'>/anicloud</a></li>
+									</ul>
+								</div>
+								<div>
+									<b>~/dev</b>
+									<ul>
+										<li><a href='https://github.com/'>/github</a></li>
+										<li><a href='https://gitlab.hochschule-stralsund.de/'>/gitlab</a></li>
+										<li><a href='https://stackoverflow.com/'>/stackoverflow</a></li>
+										<li><a href='https://devdocs.io/'>/devdocs</a></li>
+									</ul>
+								</div>
+								<div>
+									<b>~/work</b>
+									<ul>
+										<li><a href='https://ilias.hochschule-stralsund.de/ilias/login.php?target=root_1&client_id=ecs-ilias&cmd=force_login&lang=de'>/ilias</a></li>
+										<li><a href='http://schwenke.hochschule-stralsund.de/Klassen/C_E191BACA-AE2C-47F9-908C-57FD1E2154BC_04.html'>/timetable</a></li>
+										<li><a href='https://mail.protonmail.com/u/0/inbox'>/proton</a></li>
+										<li><a href='https://www.gmx.net/'>/gmx</a></li>
+										<li><a href='https://220321sivrlvsf7iu2k.nextcloud.hosting.zone'>/cloud</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class='flexbox' style='flex-direction: row; align-items: flex-start; justify-content: space-evenly; width:100%;'>
+								<div>
+									<b>~/social</b>
+									<ul>
+										<li><a href='https://reddit.com/'>/reddit</a></li>
+										<li><a href='https://www.instagram.com/'>/instagram</a></li>
+										<li><a href='https://web.whatsapp.com/'>/whatsapp</a></li>
+									</ul>
+								</div>
+								<div>
+									<b>~/misc</b>
+									<ul>
+										<li><a href='https://de.forgeofempires.com/'>/foe</a></li>
+										<li><a href='https://wiki.archlinux.org/'>/archwiki</a></li>
+										<li><a href='https://distrowatch.com/'>/distrowatch</a></li>
+										<li><a href='/oldold/index.html'>/older</a></li>
+									</ul>
+								</div>
+							</div>
+						</nav>
+					</td>
+				</tr>
+				<tr>
+					<td colspan='2'>
+						<div class='flexbox search'>	
+							<form onsubmit="return searchDDG()" style='width: 80%;'>
+								<input type="text" placeholder="Search..." id='search_box'>
+								<button type="submit"><i class="fas fa-search"></i></button>
+							</form>
+						</div>
+						<div class='flexbox' style='padding: 15px;'>
+							<div class='colcir' style='background-color:var(--black);  '></div>
+							<div class='colcir' style='background-color:var(--red);    '></div>
+							<div class='colcir' style='background-color:var(--green);  '></div>
+							<div class='colcir' style='background-color:var(--yellow); '></div>
+							<div class='colcir' style='background-color:var(--blue);   '></div>
+							<div class='colcir' style='background-color:var(--magenta);'></div>
+							<div class='colcir' style='background-color:var(--cyan);   '></div>
+							<div class='colcir' style='background-color:var(--fg);     '></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+			
+		<script>
+			function startTime() {
+			  const today = new Date();
+			  let hour = today.getHours();
+			  let minute = today.getMinutes();
+			  let day = today.getDate();
+			  let month = today.getMonth();
+			  let year = today.getFullYear();
+			  let weekDay = today.getDay();
+			  let weekDays = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
+			  let months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Sep", "Oct", "Nov", "Dec" ];
+			  let daySuf = numSuf(day);
+			  minute = checkTime(minute);
+			  document.getElementById('clock').innerHTML =  hour + "<span class='hl'>:</span>" + minute;
+			  document.getElementById('cal').innerHTML = weekDays[weekDay] + ", " + daySuf + " " + months[month] + " " + year;
+			  setTimeout(startTime, 1000);
+			}
+
+			function numSuf(i) {
+				if (i > 10 && i < 21) return i + 'th';
+				switch (i % 10) {
+					case 1:  return i + 'st';
+					case 2:  return i + 'nd';
+					case 3:  return i + 'rd';
+					default: return i + 'th';
+				}
+			}
+				
+			function checkTime(i) {
+				if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+				return i;
+			}
+
+			function searchDDG() {
+				search_term = document.getElementById('search_box').value;
+				window.location.href = "https://duckduckgo.com/?q=" + encodeURI(search_term);
+							
+				return false;
+			}
+
+		</script>
+	</body>
+</html>
